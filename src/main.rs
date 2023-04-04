@@ -17,9 +17,7 @@ async fn main() {
     let res = client.get(url).send().await;
     match res {
         Ok(res) => {
-            if res.status() < reqwest::StatusCode::OK
-                || res.status() >= reqwest::StatusCode::MULTIPLE_CHOICES
-            {
+            if !res.status().is_success() {
                 exit(1)
             }
             exit(0)
