@@ -12,7 +12,7 @@ A minimal health check. Calls the defined API and exits either with 0 (success) 
 Example `Dockerfile` file
 
 ```Dockerfile
-FROM rust:1.68 as builder
+FROM rust:1.93 as builder
 
 # Make use of cache for dependencies.
 RUN USER=root cargo new --bin your_app
@@ -28,7 +28,7 @@ RUN rm ./target/release/deps/your_app*
 RUN cargo build --release
 
 # Use distroless as minimal base image to package the app.
-FROM gcr.io/distroless/cc-debian11:nonroot
+FROM gcr.io/distroless/cc-debian13:nonroot
 
 COPY --from=builder --chown=nonroot:nonroot /your_app/target/release/your_app /app/your_app
 COPY --from=samuelba/healthcheck:latest --chown=nonroot:nonroot /app/healthcheck /app/healthcheck

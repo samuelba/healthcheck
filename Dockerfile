@@ -1,8 +1,8 @@
-FROM rust:1.68 as builder
+FROM rust:1.93 AS builder
 
 # Make use of cache for dependencies.
 RUN USER=root cargo new --bin healthcheck
-WORKDIR ./healthcheck
+WORKDIR /healthcheck
 COPY ./Cargo.lock ./Cargo.lock
 COPY ./Cargo.toml ./Cargo.toml
 RUN cargo build --release && \
@@ -15,7 +15,7 @@ RUN cargo build --release
 
 
 # Use distroless as minimal base image to package the app.
-FROM gcr.io/distroless/cc-debian11:nonroot
+FROM gcr.io/distroless/cc-debian13:nonroot
 
 COPY --from=builder --chown=nonroot:nonroot /healthcheck/target/release/healthcheck /app/healthcheck
 USER nonroot
