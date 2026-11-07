@@ -1,7 +1,7 @@
 ![GitHub](https://img.shields.io/github/license/samuelba/healthcheck)
 [![ci](https://github.com/samuelba/healthcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/samuelba/healthcheck/actions/workflows/ci.yml)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/samuelba/healthcheck)
-![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/samuelba/healthcheck)
+[![Container image](https://img.shields.io/badge/ghcr.io-samuelba%2Fhealthcheck-blue?logo=docker)](https://github.com/samuelba/healthcheck/pkgs/container/healthcheck)
 
 # Health Check
 
@@ -31,7 +31,7 @@ RUN cargo build --release
 FROM gcr.io/distroless/cc-debian13:nonroot
 
 COPY --from=builder --chown=nonroot:nonroot /your_app/target/release/your_app /app/your_app
-COPY --from=samuelba/healthcheck:latest --chown=nonroot:nonroot /app/healthcheck /app/healthcheck
+COPY --from=ghcr.io/samuelba/healthcheck:latest --chown=nonroot:nonroot /app/healthcheck /app/healthcheck
 USER nonroot
 WORKDIR /app
 EXPOSE 9000
