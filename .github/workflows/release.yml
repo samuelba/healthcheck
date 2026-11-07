@@ -16,7 +16,7 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: samuelba/actions/release-please@56835f9925333e1d3e2e5f305ae02ec1e2eef621 # v1.0.0
+      - uses: samuelba/actions/release-please@2528c31b37b1f1ce12f27f66eb05b9e1282cdf58 # v1.0.1
         id: release
         with:
           # A fine-grained PAT lets CI run on the release pull request. Without it, the release still works.
