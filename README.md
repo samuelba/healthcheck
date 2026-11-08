@@ -2,6 +2,7 @@
 [![ci](https://github.com/samuelba/healthcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/samuelba/healthcheck/actions/workflows/ci.yml)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/samuelba/healthcheck)
 [![Container image](https://img.shields.io/badge/ghcr.io-samuelba%2Fhealthcheck-blue?logo=docker)](https://github.com/samuelba/healthcheck/pkgs/container/healthcheck)
+[![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/samuelba/healthcheck)](https://hub.docker.com/r/samuelba/healthcheck)
 
 # Health Check
 
@@ -9,7 +10,7 @@ A minimal health check. Calls the defined API and exits either with 0 (success) 
 
 ## Usage
 
-Example `Dockerfile` file
+Example `Dockerfile` file. The image is published to both `ghcr.io/samuelba/healthcheck` and Docker Hub as `samuelba/healthcheck`.
 
 ```Dockerfile
 FROM rust:1.93 as builder
